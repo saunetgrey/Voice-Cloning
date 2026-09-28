@@ -1,0 +1,9 @@
+﻿/models/
+/outputs/
+/.venv/
+__pycache__/
+*.m4a
+*.wav
+*.mp3
+*.mp4
+

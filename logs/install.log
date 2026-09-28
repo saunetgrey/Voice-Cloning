@@ -1,0 +1,28 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260928220504
+Username: VICTUS\neilc
+RunAs User: VICTUS\neilc
+Configuration Name: 
+Machine: VICTUS (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+$ErrorActionPreference='Stop'; New-Item -ItemType Directory -Force logs | Out-Null; Start-Transcript -Path logs\install.log -Append; try { uv venv --python 3.12 .venv; if ($LASTEXITCODE -ne 0) { throw 'Environment creation failed' }; uv pip install --python .venv\Scripts\python.exe torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124; if ($LASTEXITCODE -ne 0) { throw 'PyTorch installation failed' }; uv pip install --python .venv\Scripts\python.exe -r requirements-inference.txt hf-xet; if ($LASTEXITCODE -ne 0) { throw 'Inference dependencies installation failed' }; uv pip check --python .venv\Scripts\python.exe; if ($LASTEXITCODE -ne 0) { throw 'Dependency check failed' }; uv pip freeze --python .venv\Scripts\python.exe | Set-Content -Encoding UTF8 logs\installed-packages.txt } finally { Stop-Transcript }
+Process ID: 1688
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is logs\install.log
+
+
+
+
+**********************
+Windows PowerShell transcript end
+End time: 20260928220554
+**********************
